@@ -3,15 +3,24 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "defalut", sans-serif;
 }
-
+@font-face {
+  font-family: "default";
+  src: url("../font/Segoe\ UI\ Historic.TTF") format("woff");
+  font-weight: bolder;
+  font-style: normal;
+}
 :root {
   --blue: #1877f2;
-  --silver: #dbdbdb;
+  --silver: #f0f0f0;
+  --lightSilver: #f7f7f7;
   --darkSilver: #999;
 }
 /* ------------------------- STANDARISASI ----------------------- */
+.d-none-toggle {
+  display: none !important;
+}
 .circle-btn {
   text-decoration: none;
   display: inline-block;
@@ -28,22 +37,28 @@
   align-items: center;
   justify-content: center;
 }
+.small {
+  width: 35px !important;
+  height: 35px !important;
+}
+.small i {
+  font-size: 19px;
+}
 .circle-btn:hover {
   background-color: #dadada;
 }
 
 nav.navbar {
   width: 100%;
-  height: 10vh;
+  height: 55px;
   border-bottom: 1px solid var(--silver);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Creates a subtle shadow */
 }
 
 nav.navbar > div {
   align-items: center;
-  /* border: 1px solid blue; */
 }
 
 .logo-search-fb {
@@ -121,7 +136,7 @@ nav.navbar > div {
   object-fit: cover;
 }
 
-/* --------------------------- CONTAINER--------------------- */
+/* --------------------------- START CONTAINER--------------------- */
 /* flex system */
 .container {
   display: block;
@@ -131,23 +146,48 @@ nav.navbar > div {
 }
 .sidebar {
   /* border: 1px solid blue; */
-  width: 25%;
+  padding-left: 15px;
+  width: 350px;
+  flex-shrink: 0;
   border-right: 1px solid var(--silver);
 }
 main {
   /* border: 1px solid blue; */
-  width: 50%;
   flex-grow: 1;
 }
 .info {
   /* border: 1px solid blue; */
-  width: 25%;
+  width: 315px;
+  flex-shrink: 0;
   border-left: 1px solid var(--silver);
+  display: block;
 }
-/* sidebar */
+/* --------------------------- END CONTAINER--------------------- */
+
+/* ---------------------------START SIDEBAR--------------------- */
+.header {
+  padding-right: 15px;
+}
+.title {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+title h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+.title-more {
+  display: flex;
+  gap: 15px;
+}
+/* --------------------------- END SIDEBAR--------------------- */
+
+/* --------------------------- START MAIN --------------------- */
 /* main */
 .contact-nav {
-  height: 10vh;
+  height: 55px;
   border-bottom: 1px solid var(--silver);
   display: flex;
   align-items: center;
@@ -155,6 +195,7 @@ main {
   width: 100%;
   box-sizing: border-box;
   padding: 0 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Creates a subtle shadow */
 }
 .contact-nav img {
   width: 45px;
@@ -178,8 +219,9 @@ main {
   display: flex;
   gap: 20px;
 }
-.call a {
+.call div {
   font-size: 20px;
+  cursor: pointer;
   color: var(--blue);
 }
 
@@ -190,17 +232,19 @@ main {
 }
 .read-and-chat {
   display: flex;
+  box-sizing: border-box;
+  padding-right: 30px;
 }
 .read-content {
-  height: 73vh;
+  height: 70vh;
   width: 8%;
 }
 .chat-content {
-  height: 73vh;
+  height: 70vh;
   width: 92%;
 }
 .chat-input {
-  height: 7vh;
+  height: 10vh;
   width: 100%;
 }
 /* ________ */
@@ -225,11 +269,18 @@ main {
 .messege-list {
   display: block;
   width: 100%;
+  margin: 2px 0;
 }
 .messege-list::after {
   content: "";
   display: block;
   clear: both;
+}
+.time {
+  text-align: center;
+  padding: 20px 0px 10px 0px;
+  color: rgb(104, 104, 104);
+  font-size: 13px;
 }
 .your-chat,
 .my-chat {
@@ -237,8 +288,6 @@ main {
   align-items: center;
   justify-content: center;
   max-width: 80%;
-  margin-top: 2px;
-  border-radius: 5px;
   padding: 10px 20px;
 }
 .your-chat {
@@ -251,34 +300,125 @@ main {
   background-color: var(--blue);
   color: white;
 }
+.your-first-g {
+  border-radius: 30px 30px 30px 5px;
+}
+.your-middle-g {
+  border-radius: 5px 30px 30px 5px;
+}
+.your-last-g {
+  border-radius: 5px 30px 30px 30px;
+}
+.your-default {
+  border-radius: 15px;
+}
+.my-first-g {
+  border-radius: 30px 30px 5px 30px;
+}
+.my-middle-g {
+  border-radius: 30px 5px 5px 30px;
+}
+.my-last-g {
+  border-radius: 30px 5px 30px 30px;
+}
+.my-default {
+  border-radius: 15px;
+}
+
 .your-img-chat,
 .my-img-chat {
-  width: 160px;
+  width: 300px;
+}
+.your-img-chat {
+  float: left;
+}
+.my-img-chat {
+  float: right;
 }
 .your-img-chat img,
 .my-img-chat img {
   width: 100%;
-  border-radius: 3px;
+  border-radius: 15px;
 }
 /* ________ */
 
-/* info */
+/* chat input */
+.chat-input {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid blue; */
+}
+.chat-input > div {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.input-group {
+  flex-grow: 1;
+  /* border: 1px solid blue; */
+}
 
+.plus {
+  width: 35px;
+  display: flex;
+  justify-content: center;
+}
+.more-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-right: 10px;
+}
+.input-and-emoji {
+  position: relative;
+  flex-grow: 1;
+}
+.input-messege {
+  width: 100%;
+  height: 40px;
+  border-radius: 30px;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: var(--silver);
+}
+.emoji-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.chat-input a {
+  font-size: 20px;
+  color: var(--blue);
+  border-color: 1px solid yellow;
+  display: inline-block;
+}
+.like-and-send {
+  width: 45px;
+  display: flex;
+  justify-content: center;
+}
+/* --------------------------- END MAIN--------------------- */
+
+/* --------------------------- START INFO--------------------- */
 details {
-  border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
   cursor: pointer;
 }
-
 .dropdown-summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 16px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
+  padding: 10px 10px;
+  width: 90%;
+  margin: 0 auto;
   border-radius: 5px;
+}
+.dropdown-summary:hover {
+  background-color: var(--lightSilver);
 }
 .dropdown-summary i {
   transition: transform 0.3s ease;
@@ -292,3 +432,4 @@ details p {
   margin: 10px 0 0 10px;
   font-size: 14px;
 }
+/* --------------------------- END INFO--------------------- */
