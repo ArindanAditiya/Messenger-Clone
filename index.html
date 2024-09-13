@@ -36,7 +36,7 @@
           <i class="fas fa-bell"></i>
           <span class="notification">1</span>
         </a>
-        <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid" alt="User Profile Picture" />
+        <img src="assets/image/person.jpg" alt="User Profile Picture" />
       </div>
     </nav>
     <!-- end navbar -->
@@ -44,7 +44,7 @@
     <div class="container">
       <!-- start chat menu -->
       <nav class="sidebar">
-        <div class="header">
+        <div id="targetElement" class="header">
           <div class="title">
             <h1>Obrolan</h1>
             <div class="title-more">
@@ -59,24 +59,23 @@
             </div>
           </div>
           <div class="messege-type">
-            <a href="#">Kontak Masuk</a>
+            <a class="active-type" href="#">Kontak Masuk </a>
             <a href="#">Komunitas</a>
           </div>
         </div>
 
-        <div class="chat-list">
-          <a href="#">
-            <img src="" alt="" />
+        <div id="scrollableDiv" class="chat-list">
+          <a class="chat" href="#">
+            <img class="pp" src="assets/image/person.jpg" alt="" />
             <div class="name-chat">
-              <h2>Lorem Ipsum</h2>
-              <div class="miniChat-timeChat">
-                <span>Assalamualaikum Kawan</span>
-                <span>10 minggu</span>
+              <h2>Bos Besar</h2>
+              <div class="miniChat-and-timeChat">
+                <span class="miniChat">Semangat pagi bro lagi ngap...</span>
+                <span class="timeChat">10 minggu</span>
               </div>
             </div>
-            <div class="read-indikator">
-              <img src="" alt="" />
-            </div>
+
+            <img class="indikator" src="assets/image/person.jpg" alt="" />
           </a>
         </div>
       </nav>
@@ -86,9 +85,9 @@
       <main>
         <div class="contact-nav">
           <di class="person">
-            <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid" alt="" />
+            <img src="assets/image/person.jpg" alt="" />
             <div class="name-active">
-              <h2>Kiky Rizky</h2>
+              <h2>Bos Besar</h2>
               <span class="active">Aktif 10 jam lalu</span>
             </div>
           </di>
@@ -101,10 +100,10 @@
         </div>
 
         <!-- messege div -->
-        <di v class="main-chat">
+        <div class="main-chat">
           <div class="read-and-chat">
             <div class="read-content">
-              <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid" alt="" />
+              <img src="assets/image/person.jpg" alt="" />
             </div>
             <div class="chat-content">
               <div class="messege-list">
@@ -130,7 +129,7 @@
               <!-- img messege -->
               <div class="messege-list">
                 <div class="your-img-chat">
-                  <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid" alt="" />
+                  <img src="assets/image/person.jpg" alt="" />
                 </div>
               </div>
               <div class="messege-list">
@@ -160,7 +159,7 @@
               </div>
               <div class="messege-list">
                 <div class="my-img-chat">
-                  <img src="https://img.freepik.com/free-photo/handsome-confident-smiling-man-with-hands-crossed-chest_176420-18743.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1725580800&semt=ais_hybrid" alt="" />
+                  <img src="assets/image/person.jpg" alt="" />
                 </div>
               </div>
             </div>
@@ -188,33 +187,41 @@
               <a href="#"><i id="send" class="fas fa-thumbs-up"></i></a>
             </div>
           </div>
-        </di>
+        </div>
       </main>
       <!-- end main chat -->
 
       <div id="info" class="info">
-        <img src="" alt="" class="your-pp" />
+        <img class="info-pp" src="assets/image/person.jpg" alt="" class="your-pp" />
         <div class="info-name">
-          <h2>Arindan Aditiya</h2>
+          <h2>Bos Besar</h2>
           <span>Aktif 8 Jam yang lalu</span>
         </div>
 
         <div class="enskription-info">
-          <i class="fas fa-lock"></i>
-          <p>Messages are end-to-end encrypted</p>
+          <div>
+            <i class="fas fa-lock"></i>
+            <p>Dienskripsi end-to-end</p>
+          </div>
+          
         </div>
 
         <div class="action">
-          <a href="#"><i class="fa-solid fa-user"></i> </a>
-          <a href="#"><i class="fas fa-bell"></i></a>
-          <a href="#"><i class="fas fa-search"></i></a>
+          <a class="circle-btn small" href="#"><i class="fa-solid fa-user"></i></a>
+          <a class="circle-btn small" href="#"><i class="fas fa-bell"></i></a>
+          <a class="circle-btn small" href="#"><i class="fas fa-search"></i></a>
+        </div>
+        <div class="action-name">
+          <span>Profi</span>
+          <span>Senyapkan</span>
+          <span>Cari</span>
         </div>
 
         <!-- dropdown -->
         <div class="dropdown-list">
           <details>
             <summary class="dropdown-summary">
-              <b>Info obrolan </b>
+              <h4>Info obrolan</h4>
               <i class="fas fa-chevron-down"></i>
             </summary>
             <p>Konten terkait info obrolan.</p>
@@ -222,7 +229,7 @@
 
           <details>
             <summary class="dropdown-summary">
-              <b>Sesuaikan obrolan </b>
+              <h4>Sesuaikan obrolan</h3>
               <i class="fas fa-chevron-down"></i>
             </summary>
             <p>Konten terkait sesuaikan obrolan.</p>
@@ -230,7 +237,7 @@
 
           <details>
             <summary class="dropdown-summary">
-              <b>Media & file </b>
+              <h4>Media & file</h4>
               <i class="fas fa-chevron-down"></i>
             </summary>
             <p>Konten terkait media & file.</p>
@@ -238,7 +245,7 @@
 
           <details>
             <summary class="dropdown-summary">
-              <b>Privasi & dukungan </b>
+              <h4>Privasi & dukungan</h4>
               <i class="fas fa-chevron-down"></i>
             </summary>
             <p>Konten terkait privasi & dukungan.</p>

@@ -37,3 +37,17 @@ const toggleSendIcon = (condition) => {
 // Event listeners
 input.addEventListener("input", () => toggleSendIcon(input.value !== ""));
 infoBtn.addEventListener("click", () => info.classList.toggle("d-none-toggle"));
+
+// -------------------- scrol event --------------------
+const scrollableDiv = document.getElementById("scrollableDiv");
+const targetElement = document.getElementById("targetElement");
+
+scrollableDiv.addEventListener("scroll", () => {
+  if (scrollableDiv.scrollTop > 0) {
+    // Kalau udah di-scroll sedikit
+    targetElement.style.borderBottom = "1px solid var(--darkSilver)";
+  } else {
+    // Kalau masih di posisi paling atas
+    targetElement.style.border = "none";
+  }
+});
