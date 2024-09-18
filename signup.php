@@ -1,3 +1,14 @@
+<?php
+require "@functions.php";
+ if(isset($_POST["submit"])){
+   
+  if(sign_up($_POST)[0] === false){
+    $validasi_wa = sign_up($_POST)[1];
+    $validasi_email = sign_up($_POST)[2];
+    $validasi_usia = sign_up($_POST)[3];
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,21 +19,23 @@
   </head>
   <body>
     <!-- start register -->
-    <form class="" action="">
+    <form method="post" action="">
       <div class="title">
         <h2>Buat Akun Baru</h2>
         <p class="title-p">ini cepat dan mudah.</p>
       </div>
       <div class="row">
-        <input class="name-input" type="text" placeholder="Nama Depan" />
-        <input class="name-input" type="text" placeholder="Nama Belakang" />
+        <input required name="nama_depan" class="name-input" type="text" placeholder="Nama Depan" />
+        <input required name="nama_belakang" class="name-input" type="text" placeholder="Nama Belakang" />
       </div>
-      <input type="text" placeholder="Nomor Whatsapp" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Kata Sandi baru" />
+      <input required name="nomor_wa" type="text" placeholder="Nomor Whatsapp" />
+      <span style='color: red;'><?php if(isset($validasi_wa)){echo $validasi_wa;}?></span>
+      <input required name="email" type="email" placeholder="Email" />
+      <span style='color: red;'><?php if(isset($validasi_email)){echo $validasi_email;}?></span>
+      <input required name="kata_sandi" type="password" placeholder="Kata Sandi baru" />
       <span>Tanggal Lahir <a href="#">?</a></span>
       <div class="row">
-        <select name="" id="">
+        <select name="tanggal" id="">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -55,7 +68,7 @@
           <option value="30">30</option>
           <option value="31">31</option>
         </select>
-        <select name="" id="">
+        <select name="bulan" id="">
           <option value="Januari">Jan</option>
           <option value="Februari">Feb</option>
           <option value="Maret">Mar</option>
@@ -69,7 +82,7 @@
           <option value="November">Nov</option>
           <option value="Desember">Des</option>
         </select>
-        <select name="" id="">
+        <select name="tahun" id="">
           <option value="2000">2000</option>
           <option value="2001">2001</option>
           <option value="2002">2002</option>
@@ -97,20 +110,22 @@
           <option value="2024">2024</option>
         </select>
       </div>
+      <span style='color: red;'><?php if(isset($validasi_usia)){echo $validasi_usia;}?></span>
       <span>Jenis Kelamin <a href="#">?</a></span>
       <div class="row">
         <div class="gander-div">
           <label for="Perempuan">Perempuan</label>
-          <input name="kealamin" id="perempuan" type="radio" value="Perempuan" />
+          <input required name="kelamin" id="perempuan" type="radio" value="Perempuan" />
         </div>
         <div class="gander-div">
           <label for="laki-laki">Laki-laki</label>
-          <input name="kealamin" id="laki-laki" type="radio" value="laki-laki" />
+          <input required checked name="kelamin" id="laki-laki" type="radio" value="laki-laki" />
         </div>
         <div class="gander-div">
           <label for="Khusus">Khusus</label>
-          <input name="kealamin" id="Khusus" type="radio" value="Khusus" />
+          <input required name="kelamin" id="Khusus" type="radio" value="Khusus" />
         </div>
+        
       </div>
       <p class="small-p">Orang yang menggunakan layanan kamu dapat mengunggah informasi kontak anda ke Facebook <a href="https://web.facebook.com/help/637205020878504">Pelajarai Selengkapnya</a></p>
 
@@ -119,9 +134,7 @@
         <a href="https://web.facebook.com/policies/cookies/">Kebijakan cookie</a> kami. Anda menerima notifikasi SMS dari kami dan bisa berhenti kapan saja
       </p>
 
-      <div class="sign-Up">
-        <a href="https://facebook.com/" class="daftar">Daftar</a>
-      </div>
+      <button name="submit" class="sign-Up">daftar</button>
 
       <a class="lempar" class="" href="login.html">Sudah Punya Akun?</a>
     </form>
