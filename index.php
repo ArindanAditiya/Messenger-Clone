@@ -36,7 +36,7 @@
           <i class="fas fa-bell"></i>
           <span class="notification">1</span>
         </a>
-        <img src="assets/image/person.jpg" alt="User Profile Picture" />
+        <img src="imageUploaded/profile.jpg" alt="User Profile Picture" />
       </div>
     </nav>
     <!-- end navbar -->

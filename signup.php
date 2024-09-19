@@ -1,13 +1,20 @@
 <?php
 require "@functions.php";
- if(isset($_POST["submit"])){
-   
-  if(sign_up($_POST)[0] === false){
-    $validasi_wa = sign_up($_POST)[1];
-    $validasi_email = sign_up($_POST)[2];
-    $validasi_usia = sign_up($_POST)[3];
+if(isset($_POST["submit"])) {
+  $result = sign_up($_POST);
+
+  // validasi teruji/tidak
+  if($result[0] === false) { // kalau tdk lulus
+      $validasi_wa = $result[1];
+      $validasi_email = $result[2];
+      $validasi_usia = $result[3];
+    } elseif ( $result[0] === true ){ // kalau lulus
+      header("Location: index.php");
+    }
   }
-}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

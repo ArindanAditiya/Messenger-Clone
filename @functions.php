@@ -1,6 +1,9 @@
 <?php
 // ? mysqli_real_escape_string
 
+// library
+require "@kirim_email.php";
+
 // CONECTION
 $hostname = "localhost";
 $username = "root";
@@ -19,7 +22,7 @@ function sign_up($data){
     $nama_belakang = htmlspecialchars($data["nama_belakang"]);
     $nomor_wa = htmlspecialchars($data["nomor_wa"]);
     $email = htmlspecialchars($data["email"]);
-    $kata_sandi = mysqli_real_escape_string($conn, $data["kata_sandi"]);
+    $kata_sandi = htmlspecialchars($data["kata_sandi"]);
     $tanggal = htmlspecialchars($data["tanggal"]);
     $bulan = htmlspecialchars($data["bulan"]);
     $tahun = htmlspecialchars($data["tahun"]);
@@ -39,8 +42,8 @@ function sign_up($data){
     }
     // cek apakah email ada yang sama
     $email = mysqli_real_escape_string($conn, $email); // Tambahkan ini untuk mencegah SQL injection
-    $email = mysqli_query($conn, "SELECT email FROM pengguna WHERE email = '$email'");
-    if( mysqli_fetch_assoc($email) ){
+    $cek_email = mysqli_query($conn, "SELECT email FROM pengguna WHERE email = '$email'");
+    if( mysqli_fetch_assoc($cek_email) ){
         $val_email = "Email sudah terdaftar, silahkan gunakan email yang lain";
         $array_vall[1] = $val_email ;
     } else {
@@ -57,21 +60,41 @@ function sign_up($data){
     }
     // ------ end validasi ------
     
+    // tangkap nilai validasi
+    $pesan_kesalahan_wa = $array_vall[0] ;
+    $pesan_kesalahan_email = $array_vall[1] ;
+    $pesan_kesalahan_usia = $array_vall[2] ;
+    $perubahan = mysqli_affected_rows($conn);
+    // pengiriman email kalau berhasil daftar
+    $penerima = $email;
+    $subjek = "intel parjamban";
+
     // enskripsi password
     $kata_sandi = password_hash($kata_sandi, PASSWORD_DEFAULT);
 
     // gabungkan string
     $nama = "$nama_depan $nama_belakang";
-    echo $nama;
+    $tanggal_lahir = "$tanggal $bulan $tahun";
+    $query = "INSERT INTO pengguna VALUE (
+            '', 
+            '$nama', 
+            '$nomor_wa',
+            '$email',
+            '$kata_sandi',
+            '$tanggal_lahir',
+            '$kelamin',
+            '',
+            'imageUploaded/profile.jpg'
+            )";
 
-    // masukkan ke database
-    
+      // lulus pengujian validasi atau tidak
+    if( $pesan_kesalahan_wa[0] == "" && $pesan_kesalahan_email[1] == "" && $pesan_kesalahan_usia[2] == "" ){
+        mysqli_query($conn, $query);
+        kirim_email_pendaftaran($penerima, $subjek);
+        return array( true ,$pesan_kesalahan_wa , $pesan_kesalahan_email, $pesan_kesalahan_usia, $perubahan);
+    } else {
+        return array( false ,$pesan_kesalahan_wa , $pesan_kesalahan_email, $pesan_kesalahan_usia, $perubahan);
+    }
 
-    // mengembalikan 4 nilai 
-    $pesan_kesalahan_wa = $array_vall[0] ;
-    $pesan_kesalahan_email = $array_vall[1] ;
-    $pesan_kesalahan_usia = $array_vall[2] ;
-    $perubahan = mysqli_affected_rows($conn);
-    return array(false, $pesan_kesalahan_wa , $pesan_kesalahan_email, $pesan_kesalahan_usia, $perubahan);
 }
 ?>
