@@ -20,6 +20,8 @@
             <p>Username: <?= htmlspecialchars($username); ?></p>
             <p>Nomor Whatsapp: <?= htmlspecialchars($whatsapp); ?></p>
             <p>Email: <?= htmlspecialchars($email); ?></p>
+            <p>password: <?= htmlspecialchars($kata_sandi); ?></p>
+            <p> untuk login anda bisa menggunakan nomor wa/email</p>
             <a href="#" class="button">Messenger Clone</a>
             <div class="footer">
                 <p>&copy; 2024 Messenger Clone Project by : <a href="#">Arindan Aditiya</a></p>

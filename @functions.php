@@ -3,6 +3,8 @@
 
 // library
 require "@kirim_email.php";
+// Api
+require "Api/whatsapp/chat_pendaftaran.php";
 
 // CONECTION
 $hostname = "localhost";
@@ -58,6 +60,13 @@ function sign_up($data){
     $pesan_kesalahan_usia = $array_vall[2];
     $perubahan = mysqli_affected_rows($conn);
 
+    //------ pengiriman email dan wa kalau berhasil daftar ------
+    $penerima = $email;
+    $subjek = "Pendaftaran Akun";
+    $username = "$nama_depan $nama_belakang";
+    $whatsapp = $nomor_wa;
+    $password = $kata_sandi;
+  
     //------ Masukkan informasi pendaftaran ke Database ------
     $kata_sandi = password_hash($kata_sandi, PASSWORD_DEFAULT);
     $nama = "$nama_depan $nama_belakang";
@@ -74,16 +83,11 @@ function sign_up($data){
             'imageUploaded/profile.jpg'
             )";
 
-    //------ pengiriman email kalau berhasil daftar ------
-    $penerima = $email;
-    $subjek = "Pendaftaran Akun";
-    $username = $nama;
-    $whatsapp = $nomor_wa;
-    
     // Logika validasi, cek apakah semua kesalahan kosong
     if( empty($pesan_kesalahan_wa) && empty($pesan_kesalahan_email) && empty($pesan_kesalahan_usia) ){
         mysqli_query($conn, $query);
-        kirim_email_pendaftaran($penerima, $subjek, $username, $whatsapp, $email);
+        kirim_email_pendaftaran($penerima, $subjek, $username, $whatsapp, $email, $password);
+        kirim_wa_pendaftaran($username, $whatsapp, $email, $password);
         return array( true , $pesan_kesalahan_wa , $pesan_kesalahan_email, $pesan_kesalahan_usia, $perubahan);
     } else {
         return array( false , $pesan_kesalahan_wa , $pesan_kesalahan_email, $pesan_kesalahan_usia, $perubahan);

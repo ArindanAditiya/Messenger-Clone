@@ -1,4 +1,4 @@
-<?php
+ <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -7,7 +7,7 @@ require 'library/PHPMailer/src/Exception.php';
 require 'library/PHPMailer/src/PHPMailer.php';
 require 'library/PHPMailer/src/SMTP.php';
 
-function kirim_email_pendaftaran($penerima, $subjek, $username, $whatsapp, $email) {
+function kirim_email_pendaftaran($penerima, $subjek, $username, $whatsapp, $email, $kata_sandi) {
     $mail = new PHPMailer(true);
 
     try {
@@ -29,6 +29,7 @@ function kirim_email_pendaftaran($penerima, $subjek, $username, $whatsapp, $emai
         $username = htmlspecialchars($username);
         $whatsapp = htmlspecialchars($whatsapp);
         $email = htmlspecialchars($email);
+        $kata_sandi = htmlspecialchars($kata_sandi);
         include('library/PHPMailer/ui_email_pendaftaran.php'); // Memasukkan template dan menangkap outputnya
         $mail->Body = ob_get_clean(); // Mengambil isi buffer dan membersihkannya
 
