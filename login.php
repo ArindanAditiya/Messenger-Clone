@@ -3,27 +3,32 @@
  require "@functions.php";
 
  if( isset($_POST["login"]) ){
-    $user_inp = $_POST["user"];
-    $password_inp = $_POST["password"];
+  // -------------------- LOGIN --------------------
+ $user_inp = $_POST["user"];
+ $password_inp = $_POST["password"];
 
-    $result = mysqli_query($conn, "SELECT * FROM pengguna WHERE email = '$user_inp' ");
-
-    // cek username
-    // gunakan function "mysqli_num_rows()" untuk mengembalikan jumlah row hasil result
-    if( mysqli_num_rows($result) === 1 ){
-       // cek password
-       $row = mysqli_fetch_assoc($result);
-       if( password_verify($password_inp, $row["kata_sandi"]) ){
-          $_SESSION["login"] = true;
-          header("Location: index.php");
-          exit;
+ $result = mysqli_query($conn, "SELECT * FROM pengguna WHERE email = '$user_inp' ");
+ // cek username
+ // gunakan function "mysqli_num_rows()" untuk mengembalikan jumlah row hasil result
+ if( mysqli_num_rows($result) === 1 ){
+    // cek password
+    $row = mysqli_fetch_assoc($result);
+    if( password_verify($password_inp, $row["kata_sandi"]) ){
+       $_SESSION["login"] = true;
+       if( isset($_SESSION["login"]) ){
+         setcookie("key", hash("sha256", $row["id_pengguna"]), time()+60 );
+         header("Location: otp_login.php");
        }
+       
+       exit;
     }
-    $error = true;
+ }
+ $error = true;
  }
 ?>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />

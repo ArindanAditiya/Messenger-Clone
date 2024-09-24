@@ -2,7 +2,6 @@
 require "@functions.php";
 if(isset($_POST["submit"])) {
   $result = sign_up($_POST);
-
   // validasi teruji/tidak
   if($result[0] === false) { // kalau tdk lulus
       $validasi_wa = $result[1];
@@ -11,10 +10,8 @@ if(isset($_POST["submit"])) {
     } elseif ( $result[0] === true ){ // kalau lulus
       header("Location: index.php");
     }
-  }
-
-
-
+  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +141,7 @@ if(isset($_POST["submit"])) {
 
       <button name="submit" class="sign-Up">daftar</button>
 
-      <a class="lempar" class="" href="login.html">Sudah Punya Akun?</a>
+      <a class="lempar" class="" href="login.php">Sudah Punya Akun?</a>
     </form>
     <!-- end register -->
   </body>

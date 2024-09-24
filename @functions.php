@@ -2,9 +2,9 @@
 // ? mysqli_real_escape_string
 
 // library
-require "@kirim_email.php";
+require "@kirim_email_pendaftaran.php";
 // Api
-require "Api/whatsapp/chat_pendaftaran.php";
+require "Api/whatsapp/wa_login_system.php";
 
 // CONECTION
 $hostname = "localhost";
